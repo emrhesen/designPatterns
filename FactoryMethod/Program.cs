@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FactoryMethod.ContainerExtension;
+using Microsoft.Extensions.Configuration;
 using System;
 using Unity;
 
@@ -11,12 +12,12 @@ namespace FactoryMethod
             var config = new ConfigurationBuilder()
                         .AddJsonFile("appsettings.json", true, true)
                         .Build();
-            
+
             var carFactorySetting = config["CarFactory"];
 
             using (var container = new UnityContainer())
             {
-                container.RegisterType<ICarFactory, BugattiFactory>();
+                container.RegisterCarFactory(carFactorySetting);
 
                 var carFactory = container.Resolve<ICarFactory>();
                 carFactory.CreateCar();
