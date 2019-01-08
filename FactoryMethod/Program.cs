@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity;
 
 namespace FactoryMethod
 {
@@ -6,12 +7,14 @@ namespace FactoryMethod
     {
         static void Main(string[] args)
         {
-            // Need IOC Container
-            var carManager = new CarManager(new BugattiFactory());
+            using (var container = new UnityContainer())
+            {
+                container.RegisterType<ICarFactory, BugattiFactory>();
 
-            carManager.CreateCar();
-
-            Console.ReadKey();
+                var carFactory = container.Resolve<ICarFactory>();
+                carFactory.CreateCar();
+                Console.ReadKey();
+            }
         }
     }
 
