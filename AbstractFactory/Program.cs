@@ -18,11 +18,13 @@ namespace AbstractFactory
         }
     }
 
+  
     public abstract class Car
     {
         public abstract void GetCar();
     }
 
+    // Concrete Car
     public class BMWCar : Car
     {
         public override void GetCar()
@@ -31,6 +33,7 @@ namespace AbstractFactory
         }
     }
 
+    // Concrete Car
     public class AudiCar : Car
     {
         public override void GetCar()
@@ -39,6 +42,7 @@ namespace AbstractFactory
         }
     }
 
+    // Concrete Car
     public class MercedesCar : Car
     {
         public override void GetCar()
@@ -53,6 +57,7 @@ namespace AbstractFactory
         public abstract Car CarCreator();
     }
 
+    // Concrete Factory
     public class BMWCarFactory : CarFactory
     {
         public override Car CarCreator()
@@ -61,6 +66,7 @@ namespace AbstractFactory
         }
     }
 
+    // Concrete Factory
     public class AudiCarFactory : CarFactory
     {
         public override Car CarCreator()
@@ -69,6 +75,7 @@ namespace AbstractFactory
         }
     }
 
+    // Concrete Factory
     public class MercedesCarFactory : CarFactory
     {
         public override Car CarCreator()
@@ -77,6 +84,7 @@ namespace AbstractFactory
         }
     }
 
+    // Factory Manager
     public class CarManager
     {
         //private readonly CarFactory _carFactory;
